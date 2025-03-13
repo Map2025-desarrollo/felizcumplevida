@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda del Tesoro - Feliz Cumple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #fbe8d3;
+        }
+        .hidden {
+            display: none;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="step1">
+        <h2>¡Feliz Cumpleaños, amor! 🎉</h2>
+        <p>Para encontrar tu regalo especial, debes resolver algunas preguntas. ¡Vamos a empezar!</p>
+        <p><strong>Pista 1:</strong> ¿Dónde cenamos juntos por primera vez?</p>
+        <input type="text" id="answer1" placeholder="Escribe tu respuesta">
+        <button onclick="checkAnswer(1, 'Omnia')">Siguiente</button>
+    </div>
+
+    <div class="container hidden" id="step2">
+        <p><strong>Pista 2:</strong> ¿Cuál fue el primer país al que viajamos juntos?</p>
+        <input type="text" id="answer2" placeholder="Escribe tu respuesta">
+        <button onclick="checkAnswer(2, 'El Salvador')">Siguiente</button>
+    </div>
+
+    <div class="container hidden" id="step3">
+        <p><strong>Pista 3:</strong> ¿Cómo le llamamos a nuestro carro?</p>
+        <input type="text" id="answer3" placeholder="Escribe tu respuesta">
+        <button onclick="checkAnswer(3, 'Manolo')">Siguiente</button>
+    </div>
+
+    <div class="container hidden" id="step4">
+        <p><strong>Pista 4:</strong> ¿Cuál es la bachata que tomaste como indirecta?</p>
+        <input type="text" id="answer4" placeholder="Escribe tu respuesta">
+        <button onclick="checkAnswer(4, 'Propuesta indecente')">Siguiente</button>
+    </div>
+
+    <div class="container hidden" id="step5">
+        <p><strong>Pista 5:</strong> ¿Cuáles son los nombres que escogimos para nuestros hijos?</p>
+        <input type="text" id="answer5" placeholder="Escribe tu respuesta">
+        <button onclick="checkAnswer(5, 'Alfonso y Catalina')">Siguiente</button>
+    </div>
+
+    <div class="container hidden" id="step6">
+        <p><strong>Pista 6:</strong> ¿Cuál fue el primer apodo de cariño que me pusiste?</p>
+        <input type="text" id="answer6" placeholder="Escribe tu respuesta">
+        <button onclick="checkAnswer(6, 'RLP')">Descubrir Sorpresa</button>
+    </div>
+
+    <div class="container hidden" id="finalMessage">
+        <h2>🎉 ¡Lo lograste! 🎉</h2>
+        <p>Has llegado al final de la búsqueda del tesoro. Aquí tienes tu carta especial:</p>
+        <p><em>Mi amor,
+
+Hoy es un día muy especial, el día en que el mundo tuvo la dicha de recibir a la persona más increíble que he conocido: tú. Cada año en esta fecha, no solo celebro el día en que naciste, sino también el regalo que eres para mi vida.
+
+Desde que llegaste a mi mundo, todo ha sido más brillante, más cálido y más feliz. Contigo, cada día es una aventura, un motivo para sonreír, un refugio de amor y complicidad. No hay palabras suficientes para describir cuánto significas para mí, pero intentaré resumirlo en algo sencillo: Eres mi hogar, mi paz y mi felicidad.
+
+Admiro la persona que eres: fuerte, bondadosa, inteligente y con un corazón tan grande que logra iluminar hasta los días más grises. Me encanta verte reír, escuchar tus pensamientos, compartir nuestros sueños y, sobre todo, saber que a tu lado tengo el privilegio de vivir el amor más hermoso que jamás imaginé.
+
+Hoy quiero desearte todo lo mejor: salud, éxito, felicidad… pero, sobre todo, quiero que siempre recuerdes cuánto te amo y lo agradecida que estoy de tenerte en mi vida. Que este nuevo año te traiga tantas alegrías como las que tú me das cada día.
+
+Feliz cumpleaños, Mi Vida, amor de mi vida, el hombre de mi vida, mi amante, mi mejor amigo.
+Siempre tuya, RLP </em></p>
+        <p>¡Espero que este juego te haya sacado una sonrisa! Te amo infinito. ❤️</p>
+    </div>
+
+    <script>
+        function checkAnswer(step, correctAnswer) {
+            let inputId = "answer" + step;
+            let nextStepId = "step" + (step + 1);
+            let currentStepId = "step" + step;
+            let finalMessage = document.getElementById("finalMessage");
+            
+            let userAnswer = document.getElementById(inputId).value.trim().toLowerCase();
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                document.getElementById(currentStepId).classList.add("hidden");
+                if (document.getElementById(nextStepId)) {
+                    document.getElementById(nextStepId).classList.remove("hidden");
+                } else {
+                    finalMessage.classList.remove("hidden");
+                }
+            } else {
+                alert("¡Ups! Inténtalo de nuevo. Pista: Recuérdalo con amor 💖");
+            }
+        }
+    </script>
+</body>
+</html>
